@@ -1,0 +1,20 @@
+.wd-bg-light-gray {
+    background-color: lightgray;
+}
+
+.wd-fg-dark-gray {
+    color: darkgray;
+}
+
+.wd-fg-light-gray {
+    color: lightgray;
+}
+
+.wd-ul-horizontal {
+    list-style: none;
+}
+
+.wd-li-horizontal {
+    display: inline-block;
+    margin-right: 10px; /* add spacing between items */
+}
