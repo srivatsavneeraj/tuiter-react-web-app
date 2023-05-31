@@ -1,97 +1,96 @@
-.wd-a {
-    display: flex;
+.wd-ul2 {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.wd-ul2 li {
+  display: flex;
+  flex-direction: column; /* Add flex-direction to create a vertical layout */
+  align-items: flex-start; /* Align items to the start */
+  margin-bottom: 10px;
+}
+.grid-row {
+  clear: both;
+}
+.grid-col-left {
+  width: 10%;
+  float: left;
+}
+.wd-container {
+  display: flex;
+  align-items: center;
+}
+.wd-container-A {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border-bottom-style: solid;
+  border-bottom-color: lightgrey;
+  border-width: 1px;
+}
+.wd-container-A-left {
+  width: "10%";
+}
+.wd-padding-left {
+  padding-left: 25px;
+}
+.wd-padding-left-12 {
+  padding-left: 12px;
+}
+.wd-padding-right {
+  padding-right: 25px;
+}
+.wd-padding-topbottom-10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.wd-padding-all {
+  padding: 12;
+}
+.wd-width-10 {
+  width: 25px;
+}
+.wd-fg-color-grey {
+  color: gray;
+}
+.wd-fg-color-red {
+  color: red;
+}
+.wd-img-size {
+  height: 48px;
+  width: 48px;
+  padding-left: 16px;
+  border-radius: 24px;
+}
+.wd-round-image {
+  width: 100%;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+}
+.wd-valign-top {
+  vertical-align: top;
+}
+.wd-border-solid {
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(148, 148, 148);
+}
+.wd-border-radius {
+  border-radius: 25px;
 }
 
-.wd-a-title {
-    margin-left: 10px;
-    padding-left: 3%;
+.wd-li {
+  flex: 1;
 }
-
-.wd-a-handle{
-    color: lightgray;
-    font-size: 13px;
-    margin-top: 16px;
-    margin-left: 16px;
-    border-bottom: 1px solid lightgray;
+.wd-ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
-.wd-rest{
-    clear: both;
+.wd-float-right {
+  float: right;
 }
-.wd-user-image{
-
-    margin-top: 12px;
-    margin-left: 16px;
-    border-radius: 48%;
-    float: left;
-    width:3%
-}
-.wd-c{
-    float: left;
-    margin-top: 12px;
-    margin-left: 12px;
-    width:90%;
-}
-.wd-c-author{
-    font-size: 15px;
-}
-.wd-c-handle{
-    color: lightgray;
-    font-size: 15px;
-}
-.wd-d-content{
-    font-size: 15px;
-    width: 506px;
-}
-.wd-e-image{
-    width: 504px;
-    height: 264px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px ;
-    border-bottom: 1px solid lightgray
-}
-.wd-e{
-    width: 504px;
-    border:1px solid lightgray;
-    border-radius: 10px;
-}
-
-.wd-f-title{
-    padding-left: 12px;
-    padding-right:12px;
-    font-size: 15px;
-
-}
-.wd-f-content{
-
-    padding-left: 12px;
-    padding-right:12px;
-    padding-bottom: 12px;
-    font-size: 15px;
-    color: darkgray;
-
-}
-
-.wd-g-icon{
-    margin-top: 12px;
-    margin-bottom: 20px;
-}
-
-.flag-name::before {
-    content: "";
-    display: inline-block;
-    width: 24px;
-    height: 16px;
-    background-image: url('https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.britannica.com%2F68%2F7068-004-7848FEB4%2FFlag-Canada.jpg&tbnid=P0gTw_tJAsDUAM&vet=12ahUKEwiTs6mDxYr_AhWSCVkFHcFJAUQQMygAegUIARD4Ag..i&imgrefurl=https%3A%2F%2Fwww.britannica.com%2Ftopic%2Fflag-of-Canada&docid=0LBLkIxc6WD_HM&w=800&h=400&q=canada%20flag&ved=2ahUKEwiTs6mDxYr_AhWSCVkFHcFJAUQQMygAegUIARD4Ag');
-    background-size: cover;
-    margin-right: 5px;
-}
-
-.flag-text::before {
-    content: "";
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background-image: url('https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.britannica.com%2F68%2F7068-004-7848FEB4%2FFlag-Canada.jpg&tbnid=P0gTw_tJAsDUAM&vet=12ahUKEwiTs6mDxYr_AhWSCVkFHcFJAUQQMygAegUIARD4Ag..i&imgrefurl=https%3A%2F%2Fwww.britannica.com%2Ftopic%2Fflag-of-Canada&docid=0LBLkIxc6WD_HM&w=800&h=400&q=canada%20flag&ved=2ahUKEwiTs6mDxYr_AhWSCVkFHcFJAUQQMygAegUIARD4Ag');
-    background-size: cover;
-    margin-right: 5px;
+.wd-flex-grow {
+  flex-grow: 1;
 }
