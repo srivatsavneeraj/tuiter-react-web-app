@@ -1,0 +1,174 @@
+.wd-rounded-corners-all-around {
+    border-radius: 50px;
+    border: none;
+}
+.wd-search-bar {
+    display: flex;
+    background-color: lightgray;
+    border: none;
+    width: 90%;
+}
+.wd-settings-icon {
+    padding: 10px;
+    justify-content: center;
+}
+.wd-bg-color-grey {
+    background-color: rgb(237, 219, 219);
+}
+.wd-fg-color-grey {
+    color: rgb(47, 46, 46);
+}
+.wd-padding-fat {
+    padding: 10px;
+}
+.wd-padding-left {
+    padding: 10px;
+}
+.wd-padding-right-20 {
+    padding: 20px;
+}
+.wd-padding-topbottom-10 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.wd-width-95 {
+    width: 95%;
+}
+.wd-width-100 {
+    width: 100%;
+}
+.wd-height-350 {
+    height: 350px;
+}
+.wd-float-right {
+    float: right;
+    padding-top: 10px;
+}
+.wd-grid-row {
+    clear: both;
+}
+.wd-align-center {
+    text-align: center;
+}
+.wd-border-thin {
+    border-width: 1px;
+}
+.wd-border-solid {
+    border-style: solid;
+}
+.wd-border-bottom {
+    border-bottom: solid;
+}
+.wd-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.wd-ul2 {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    justify-content: space-between;
+}
+.wd-ul2 li {
+    display: flex;
+    flex-direction: column; /* Add flex-direction to create a vertical layout */
+    align-items: flex-start; /* Align items to the start */
+    margin-bottom: 10px;
+}
+.wd-li {
+    flex: 1;
+}
+.wd-search-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.wd-line-container {
+    display: flex;
+}
+.wd-line-blue {
+    width: 6%;
+    height: 4px;
+    background-color: rgb(91, 217, 233);
+    margin: 0;
+    border: none;
+    border-radius: 50px;
+}
+.wd-line-black {
+    height: 0.1px;
+    background-color: rgb(115, 113, 113);
+    margin: 0;
+    border: none;
+}
+
+.wd-image-container-2 {
+    position: relative;
+}
+
+.wd-image-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: transparent;
+    color: blue;
+    font-size: 30px;
+    padding: 5px;
+}
+.wd-input-group-text {
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+.wd-grid-col-left {
+    float: left;
+}
+
+.grid-col-left-A {
+    width: 85%;
+    float: left;
+}
+.grid-col-right-A {
+    width: 15%;
+    float: right;
+}
+.wd-img-size {
+    height: 80px;
+    width: 100px;
+}
+.wd-icon-img-size {
+    height: 40px;
+    width: 40px;
+}
+.wd-icon-img-size2 {
+    height: 48px;
+    width: 48px;
+}
+.wd-align-right {
+    align-items: right;
+}
+.wd-no-underline {
+    text-decoration: none;
+}
+
+.flag-name::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 16px;
+    background-image: url('https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.britannica.com%2F68%2F7068-004-7848FEB4%2FFlag-Canada.jpg&tbnid=P0gTw_tJAsDUAM&vet=12ahUKEwiTs6mDxYr_AhWSCVkFHcFJAUQQMygAegUIARD4Ag..i&imgrefurl=https%3A%2F%2Fwww.britannica.com%2Ftopic%2Fflag-of-Canada&docid=0LBLkIxc6WD_HM&w=800&h=400&q=canada%20flag&ved=2ahUKEwiTs6mDxYr_AhWSCVkFHcFJAUQQMygAegUIARD4Ag');
+    background-size: cover;
+    margin-right: 5px;
+}
+
+.flag-text::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url('https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.britannica.com%2F68%2F7068-004-7848FEB4%2FFlag-Canada.jpg&tbnid=P0gTw_tJAsDUAM&vet=12ahUKEwiTs6mDxYr_AhWSCVkFHcFJAUQQMygAegUIARD4Ag..i&imgrefurl=https%3A%2F%2Fwww.britannica.com%2Ftopic%2Fflag-of-Canada&docid=0LBLkIxc6WD_HM&w=800&h=400&q=canada%20flag&ved=2ahUKEwiTs6mDxYr_AhWSCVkFHcFJAUQQMygAegUIARD4Ag');
+    background-size: cover;
+    margin-right: 5px;
+}

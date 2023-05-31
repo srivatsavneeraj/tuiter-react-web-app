@@ -14,20 +14,20 @@ import FunctionDestructing from "./function-destructing";
 function JavaScript() {
     console.log('Hello World');
     return(
-        <div>
-            <h1>JavaScript</h1>
-            <VariablesAndConstants/>
-            <VariableTypes/>
-            <BooleanVariables/>
-            <IfElseFunc/>
-            <TernaryOperators/>
-            <WorkingWithFunctions/>
-            <TemplateLiterals />
-            <House />
-            <Spread />
-            <Destructing />
-            <FunctionDestructing />
-        </div>
+       <div>
+          <h1>JavaScript</h1>
+          <VariablesAndConstants/>
+          <VariableTypes/>
+          <BooleanVariables/>
+          <IfElseFunc/>
+          <TernaryOperators/>
+          <WorkingWithFunctions/>
+          <TemplateLiterals />
+          <House />
+          <Spread />
+          <Destructing />
+          <FunctionDestructing />
+       </div>
     );
-}
-export default JavaScript
+ }
+ export default JavaScript
