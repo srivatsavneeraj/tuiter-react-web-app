@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faSearch,
   faHouse,
   faHashtag,
   faBell,
@@ -29,35 +28,35 @@ const NavigationSidebar = () => {
     { name: "more", icon: faEllipsis },
   ];
   return (
-    <div class="container">
-      <div className="d-none d-xl-block list-group">
-        {links.map((link) => (
-          <Link
-            to={`/tuiter/${link.name}`}
-            className={`list-group-item text-capitalize ${
-              active === link.name ? "active" : ""
-            }`}
-          >
-            <FontAwesomeIcon icon={link.icon} /> &nbsp;
-            {link.name}
-          </Link>
-        ))}
-      </div>
+      <div class="container">
+        <div className="d-none d-xl-block list-group">
+          {links.map((link) => (
+              <Link
+                  to={`/tuiter/${link.name}`}
+                  className={`list-group-item text-capitalize ${
+                      active === link.name ? "active" : ""
+                  }`}
+              >
+                <FontAwesomeIcon icon={link.icon} /> &nbsp;
+                {link.name}
+              </Link>
+          ))}
+        </div>
 
-      <div className="d-block d-xl-none list-group">
-        {links.map((link) => (
-          <Link
-            to={`/tuiter/${link.name}`}
-            className={`list-group-item text-capitalize ${
-              active === link.name ? "active" : ""
-            }`}
-          >
-            <FontAwesomeIcon icon={link.icon} />
-            {/* {link.name} */}
-          </Link>
-        ))}
+        <div className="d-block d-xl-none list-group">
+          {links.map((link) => (
+              <Link
+                  to={`/tuiter/${link.name}`}
+                  className={`list-group-item text-capitalize ${
+                      active === link.name ? "active" : ""
+                  }`}
+              >
+                <FontAwesomeIcon icon={link.icon} />
+                {/* {link.name} */}
+              </Link>
+          ))}
+        </div>
       </div>
-    </div>
   );
 };
 export default NavigationSidebar;
