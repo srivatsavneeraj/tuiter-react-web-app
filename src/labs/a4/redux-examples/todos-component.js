@@ -1,69 +1,73 @@
-import {useDispatch,useSelector} from "react-redux";
-import {addTodo, deleteTodo, todoDoneToggle} from "./reducers/todos-reducer";
-import React, {useState} from "react";
-
-
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addTodo, deleteTodo, todoDoneToggle } from "./reducers/todos-reducer";
 const Todos = () => {
-    const [todo, setTodo] = useState({do: 'Create a future of abundance'});
-    const dispatch = useDispatch();
-    const toggleTodoDone = (todo) => {
-        dispatch(todoDoneToggle(todo))
-      }
-     
-    const deleteTodoClickHandler = (index) => {
-        dispatch(deleteTodo(index))
-       }
-       
- const createTodoClickHandler = () => {
-   dispatch(addTodo(todo))
-   setTodo({do: ''})
- }
+  const todos = useSelector((state) => state.todos);
+  const [todo, setTodo] = useState({ do: "" });
+  const dispatch = useDispatch();
 
-    const todoChangeHandler = (event) => {
-   const doValue = event.target.value;
-   const newTodo = {
-     do: doValue
-   };
-   setTodo(newTodo);
- }
- const todos
-       = useSelector(state => state.todos);
- return(
-   <>
-     <h3>Todos</h3>
-     <ul className="list-group">
-     <li className="list-group-item">
-     <button onClick={createTodoClickHandler}
-               className="btn btn-primary w-25 
-                          float-end">
-         Create</button>
-       <input onChange={todoChangeHandler}
-              value={todo.do}
-              className="form-control w-75"/>
-     </li>
+  const deleteTodoClickHandler = (index) => {
+    dispatch(deleteTodo(index));
+  };
 
-       {
-         todos.map((todo, index) =>
-         <li key={todo._id}
-             className="list-group-item">
-             <button onClick={() => 
-              deleteTodoClickHandler(index)}
+  const createTodoClickHandler = () => {
+    dispatch(addTodo(todo));
+    setTodo({ do: "" });
+  };
+
+  const toggleTodoDone = (todo) => {
+    dispatch(todoDoneToggle(todo));
+  };
+
+  const todoChangeHandler = (event) => {
+    const doValue = event.target.value;
+    const newTodo = {
+      do: doValue,
+    };
+    setTodo(newTodo);
+  };
+
+  return (
+    <>
+      <h3>Todos</h3>
+      <ul className="list-group">
+        <li className="list-group-item">
+          <button
+            onClick={createTodoClickHandler}
+            className="btn btn-primary w-25 
+                          float-end"
+          >
+            Create
+          </button>
+
+          <input
+            onChange={todoChangeHandler}
+            value={todo.do}
+            className="form-control w-75"
+          />
+        </li>
+
+        {todos.map((todo, index) => (
+          <li className="list-group-item">
+            <button
+              onClick={() => deleteTodoClickHandler(index)}
               className="btn btn-danger 
-                         float-end ms-2">
+                       float-end ms-2"
+            >
               Delete
-             </button>
-             <input type="checkbox" className="me-2"
-            checked={todo.done}
-            onChange={() => 
-             toggleTodoDone(todo)}/>
+            </button>
+            <input
+              type="checkbox"
+              className="me-2"
+              checked={todo.done}
+              onChange={() => toggleTodoDone(todo)}
+            />
 
             {todo.do}
-         </li>
-         )
-       }
-     </ul>
-   </>
- );
+          </li>
+        ))}
+      </ul>
+    </>
+  );
 };
 export default Todos;
-
