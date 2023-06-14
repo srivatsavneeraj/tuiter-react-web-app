@@ -1,33 +1,32 @@
-import VariablesAndConstants from "./variables-and-constants";
 import VariableTypes from "./variable-types";
+import VariablesAndConstants from "./variables-and-constants";
 import BooleanVariables from "./boolean-variables";
-import IfElse from "./if-else";
-import TernaryOperator from "./ternary-operator";
-import WorkingWithFunctions from "./working-with-functions";
-import WorkingWithArrays from "./working-with-arrays";
-import TemplateLiterals from "./temlplate-literals";
+import IfElseFunc from "./if-else";
+import TernaryOperators from "./ternary-operator";
+import WorkingWithFunctions from "./es5-functions";
+import TemplateLiterals from "./template-literals";
 import House from "./house";
 import Spread from "./spread";
 import Destructing from "./destructing";
 import FunctionDestructing from "./function-destructing";
 
+
 function JavaScript() {
-    console.log('Hello World!');
+    console.log('Hello World');
     return(
        <div>
           <h1>JavaScript</h1>
           <VariablesAndConstants/>
           <VariableTypes/>
           <BooleanVariables/>
-          <IfElse/>
-          <TernaryOperator/>
+          <IfElseFunc/>
+          <TernaryOperators/>
           <WorkingWithFunctions/>
-          <WorkingWithArrays/>
-          <TemplateLiterals/>
-          <House/>
-          <Spread/>
-            <Destructing/>
-            <FunctionDestructing/>
+          <TemplateLiterals />
+          <House />
+          <Spread />
+          <Destructing />
+          <FunctionDestructing />
        </div>
     );
  }
