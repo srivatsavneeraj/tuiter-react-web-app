@@ -1,145 +1,34 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHouse,
-  faHashtag,
-  faBell,
-  faEnvelope,
-  faBookmark,
-  faList,
-  faEllipsis,
-  faUser,
-  faRegistered,
-  faNewspaper,
-} from "@fortawesome/free-solid-svg-icons";
-// import "./index.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../vendors/bootstrap/all.min.css';
+
 
 const NavigationSidebar = () => {
-  
-  const { pathname } = useLocation();
-  const [ignore, tuiter, active] = pathname.split("/");
-  const links = [
-    { name: "home", icon: faHouse },
-    { name: "explore", icon: faHashtag },
-    { name: "notifications", icon: faBell },
-    { name: "messages", icon: faEnvelope },
-    { name: "bookmarks", icon: faBookmark },
-    { name: "lists", icon: faList },
-    { name: "more", icon: faEllipsis },
-  ];
-
-  const {currentUser} = useSelector((state) => state.user);
-  console.log("Nav Bar");
-  console.log(currentUser);
-
-  return (
-    <div class="container">
-      <div className="d-none d-xl-block list-group">
-        {links.map((link) => (
-          <Link
-            to={`/tuiter/${link.name}`}
-            className={`list-group-item text-capitalize ${
-              active === link.name ? "active" : ""
-            }`}
-          >
-            <FontAwesomeIcon icon={link.icon} /> &nbsp;
-            {link.name}
-          </Link>
-        ))}
-        {!currentUser && (
-          <Link
-            to={`/tuiter/login`}
-            className={`list-group-item text-capitalize ${
-              active === "login" ? "active" : ""
-            }`}
-          >
-            <FontAwesomeIcon
-              icon={faHashtag}
-              style={{ paddingRight: "10px" }}
-            />
-            Login
-          </Link>
-        )}
-        {!currentUser && (
-          <Link
-            to={`/tuiter/register`}
-            className={`list-group-item text-capitalize ${
-              active === "register" ? "active" : ""
-            }`}
-          >
-            <FontAwesomeIcon
-              icon={faNewspaper}
-              style={{ paddingRight: "10px" }}
-            />
-            Register
-          </Link>
-        )}
-        {currentUser && (
-          <Link
-            to={`/tuiter/profile`}
-            className={`list-group-item text-capitalize ${
-              active === "profile" ? "active" : ""
-            }`}
-          >
-            <FontAwesomeIcon icon={faUser} style={{ paddingRight: "10px" }} />
-            Profile
-          </Link>
-        )}
-      </div>
-
-      <div className="d-block d-xl-none list-group">
-        {links.map((link) => (
-          <Link
-            to={`/tuiter/${link.name}`}
-            className={`list-group-item text-capitalize ${
-              active === link.name ? "active" : ""
-            }`}
-          >
-            <FontAwesomeIcon icon={link.icon} />
-            {/* {link.name} */}
-          </Link>
-        ))}
-        {!currentUser && (
-          <Link
-            to={`/tuiter/login`}
-            className={`list-group-item text-capitalize ${
-              active === "login" ? "active" : ""
-            }`}
-          >
-            <FontAwesomeIcon
-              icon={faHashtag}
-              style={{ paddingRight: "10px" }}
-            />
-          </Link>
-        )}
-        {!currentUser && (
-          <Link
-            to={`/tuiter/register`}
-            className={`list-group-item text-capitalize ${
-              active === "register" ? "active" : ""
-            }`}
-          >
-            <FontAwesomeIcon
-              icon={faNewspaper}
-              style={{ paddingRight: "10px" }}
-            />
-          </Link>
-        )}
-        {currentUser && (
-          <Link
-            to={`/tuiter/profile`}
-            className={`list-group-item text-capitalize ${
-              active === "profile" ? "active" : ""
-            }`}
-          >
-            <FontAwesomeIcon icon={faUser} />
-          </Link>
-        )}
-      </div>
-    </div>
-  );
+  const { currentUser } = useSelector((state) => state.user);
+ const { pathname } = useLocation();
+ const [ignore, tuiter, active] = pathname.split("/");
+ const links = [{name : "home", image : "fa-home"},    {name : "explore", image : "fa-hashtag"},  
+                {name : "notifications", image : "fa-bell"}, {name : "messages", image: "fa-envelope"}, 
+                {name : "bookmarks", image : "fa-bookmark"}, {name : "lists", image : "fa-list"}, {name : "more", image : "fa-ellipsis"}];
+  console.log("user : ", currentUser)
+ return (
+   <div className="list-group" style={{"width": "100%"}}>
+     {!currentUser && <Link className={`list-group-item ${active === "login" ? "active" : ""}`} to="/tuiter/login">   Login   </Link>}
+     {!currentUser && <Link className={`list-group-item ${active === "register" ? "active" : ""}`} to="/tuiter/register">Register</Link>}
+     { currentUser && <Link className={`list-group-item ${active === "profile" ? "active" : ""}`} to="/tuiter/profile"> Profile </Link>}
+     {links.map((link) => 
+         <Link to={`/tuiter/${link.name}`} className={`list-group-item ps-1 text-capitalize col d-flex ${active === link.name ? "active" : ""}`}>
+          
+          <i className={`fa ${link.image} pe-2 pt-2 fa-solid col-12 col-xl-2 col-xxl-2 fa-solid fa-lg border-0 pb-2 list-group-item text-capitalize ${active === link.name ? "active" : ""}`}></i>
+          <div className={'d-none d-xl-block d-xxl-block ps-4'}>{link.name}</div>
+         </Link>
+         
+     )}
+     
+   </div>
+ );
 };
+
 export default NavigationSidebar;

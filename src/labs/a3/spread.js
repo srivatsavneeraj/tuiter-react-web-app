@@ -18,4 +18,3 @@ function Spread() {
     );
    }
    export default Spread;
-   

@@ -1,4 +1,4 @@
-function TernaryOperators() {
+function TernaryOperator() {
     let loggedIn = true;
     return(
        <div>
@@ -6,5 +6,7 @@ function TernaryOperators() {
           { loggedIn ? <p>Welcome</p> : <p>Please login</p> }
        </div>
     )
+   
 }
-export default TernaryOperators;
+
+export default TernaryOperator;

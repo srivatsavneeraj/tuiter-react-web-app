@@ -1,17 +1,20 @@
-function FunctionParanthesisAndParameters() {
+function FunctionParenthesisAndParameters() {
     const square = a => a * a;
     const plusOne = a => a + 1;
 
-    const twosquared = square(2);
-    const threeplusone = plusOne(3);
+    const twoSquared = square(2);
+    const threePlusOne = plusOne(3);
+
     return (
-        <>
-            <h2>Paranthesis and Parameters</h2>
-            twosquared = {twosquared} <br />
-            square(2) = {twosquared} <br />
-            threeplusone = {threeplusone} <br />
-            plusOne(3) = {plusOne} <br />
-        </>
+        <div>
+            <h2>Parenthesis And Parameters</h2>
+            twoSquared = {twoSquared}<br/>
+            square(2) = {square(2)}<br/>
+            threePlusOne = {threePlusOne}<br/>
+            plusOne(3) = {plusOne(3)}<br/>
+
+        </div>
     )
+
 }
-export default FunctionParanthesisAndParameters;
+export default FunctionParenthesisAndParameters;
