@@ -5,6 +5,8 @@ import { faClose } from "@fortawesome/free-solid-svg-icons";
 import "./styles.css";
 import { deleteTuit } from "../reducers/tuits-reducer";
 import TuitsStats from "./tuit-stats";
+import {deleteTuitThunk} from "../services/tuits-thunks";
+
 
 const TuitItem = ({
                       tuit = {
@@ -12,20 +14,22 @@ const TuitItem = ({
                           topic: "Space",
                           userName: "SpaceX",
                           title:
-                              "The Space Exploration Technologies Corporation, commonly referred to as SpaceX is an American spacecraft manufacturer, launcher, and satellite communications company headquartered in Hawthorne, California.",
+                              "100s of SpaceX Starships land on Mars after a 6 month journey. 1000s of Martian colonists being building Mars Base 1",
                           time: "2h",
                           image: "spacex.png",
                           liked: true,
                           replies: 321,
                           retuits: 543,
                           likes: 22345,
+                          dislikes: 123,
                           handle: "@spacex",
-                          tuit: "The Space Exploration Technologies Corporation, commonly referred to as SpaceX is an American spacecraft manufacturer, launcher, and satellite communications company headquartered in Hawthorne, California.",
+                          tuit: "100s offffffff SpaceX Starships land on Mars after a 6 month journey. 1000s of Martian colonists being building Mars Base 1",
                       },
                   }) => {
     const dispatch = useDispatch();
     const deleteTuitHandler = (id) => {
-        dispatch(deleteTuit(id));
+        // dispatch(deleteTuit(id));
+        dispatch(deleteTuitThunk(id));
     };
     return (
         <li className="list-group-item">

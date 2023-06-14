@@ -1,9 +1,15 @@
 import React, { useState } from "react";
-import { AiOutlineBarChart, AiOutlineBars, AiOutlineFileGif, AiOutlinePicture } from 'react-icons/ai';
-import { BsEmojiSmile } from 'react-icons/bs';
-import { HiOutlineLocationMarker } from 'react-icons/hi';
+import {
+    AiOutlineBarChart,
+    AiOutlineBars,
+    AiOutlineFileGif,
+    AiOutlinePicture,
+} from "react-icons/ai";
+import { BsEmojiSmile } from "react-icons/bs";
+import { HiOutlineLocationMarker } from "react-icons/hi";
 import { createTuit } from "./reducers/tuits-reducer";
 import { useDispatch } from "react-redux";
+import { createTuitThunk } from "./services/tuits-thunks";
 
 const WhatsHappening = () => {
     let [whatsHappening, setWhatsHappening] = useState("");
@@ -11,9 +17,20 @@ const WhatsHappening = () => {
     const tuitClickHandler = () => {
         // console.log(whatsHappening);
         const newTuit = {
+            topic: "New Tweet",
+            userName: "newTweet",
+            handle: "@newTweet",
+            time: "0h",
+            image: "nasa.png",
+            title: "random Stuff",
+            liked: false,
+            likes: 0,
+            dislikes: 0,
+            replies: 0,
+            retuits: 0,
             tuit: whatsHappening,
         };
-        dispatch(createTuit(newTuit));
+        dispatch(createTuitThunk(newTuit));
         setWhatsHappening("");
     };
 
@@ -37,11 +54,11 @@ const WhatsHappening = () => {
                         Tuit
                     </button>
                     <div className="text-primary fs-2">
-                        <AiOutlinePicture className="me-3"/>
-                        <AiOutlineFileGif className="me-3"/>
-                        <AiOutlineBarChart className="me-3"/>
-                        <BsEmojiSmile className="me-3"/>
-                        <HiOutlineLocationMarker className="me-3"/>
+                        <AiOutlinePicture className="me-3" />
+                        <AiOutlineFileGif className="me-3" />
+                        <AiOutlineBarChart className="me-3" />
+                        <BsEmojiSmile className="me-3" />
+                        <HiOutlineLocationMarker className="me-3" />
                     </div>
                 </div>
             </div>

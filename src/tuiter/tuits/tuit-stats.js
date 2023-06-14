@@ -3,11 +3,13 @@ import {
     faCommenting,
     faHeart,
     faRetweet,
+    faThumbsDown,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch } from "react-redux";
 import { toggleLikes } from "../reducers/tuits-reducer";
+import { updateTuitThunk } from "../services/tuits-thunks";
 
 const TuitsStats = ({ tuit }) => {
     const dispatch = useDispatch();
@@ -23,19 +25,29 @@ const TuitsStats = ({ tuit }) => {
         <FontAwesomeIcon icon={faRetweet} /> &nbsp; {tuit.retuits}
       </span>
       <span>
-        {tuit.liked ? (
-            <FontAwesomeIcon
-                icon={faHeart}
-                style={{ color: "red" }}
-                onClick={() => toggleLikeHandler(tuit._id)}
-            />
-        ) : (
-             <FontAwesomeIcon
-                 icon={faHeart}
-                 onClick={() => toggleLikeHandler(tuit._id)}
-             />
-         )}
-          &nbsp; {tuit.likes}
+        {" "}
+          <FontAwesomeIcon
+              style={{ color: "red" }}
+              icon={faHeart}
+              onClick={() =>
+                  dispatch(
+                      updateTuitThunk({ ...tuit, likes: tuit.likes + 1, liked: true })
+                  )
+              }
+          />
+          &nbsp;{tuit.likes}
+      </span>
+      <span>
+        {" "}
+          <FontAwesomeIcon
+              icon={faThumbsDown}
+              onClick={() =>
+                  dispatch(
+                      updateTuitThunk({ ...tuit, dislikes: tuit.dislikes + 1})
+                  )
+              }
+          />
+          &nbsp;{tuit.dislikes}
       </span>
       <span>
         <FontAwesomeIcon icon={faArrowUpFromBracket} />
