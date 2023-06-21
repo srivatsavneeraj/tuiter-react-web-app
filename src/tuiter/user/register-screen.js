@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { registerThunk } from "../services/auth-thunks";
+
 function RegisterScreen() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -12,11 +13,17 @@ function RegisterScreen() {
   const handleRegister = async () => {
     try {
       await dispatch(
-        registerThunk({ username, password, firstName, lastName })
+        registerThunk({
+          username,
+          password,
+          firstName,
+          lastName,
+          // _id: new Date().getTime(),
+        })
       );
       navigate("/tuiter/profile");
     } catch (e) {
-      console.log(e);
+      alert(e);
     }
   };
   return (

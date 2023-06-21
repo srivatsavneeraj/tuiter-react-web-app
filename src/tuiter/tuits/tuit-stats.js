@@ -1,59 +1,96 @@
-import React from "react";
+import {
+  faArrowUpFromBracket,
+  faCommenting,
+  faHeart,
+  faRetweet,
+  faThumbsDown,
+} from "@fortawesome/free-solid-svg-icons";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch } from "react-redux";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import "./index.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { toggleLikes } from "../reducers/tuits-reducer";
 import { updateTuitThunk } from "../services/tuits-thunks";
-// import { removeLike, addLike } from "../reducers/tuits-reducer";
 
-const TuitStats = ({ tuit, tuits }) => {
+const TuitsStats = ({ tuit }) => {
   const dispatch = useDispatch();
+  const toggleLikeHandler = (id) => {
+    dispatch(toggleLikes(id));
+  };
+
   return (
-    <div className="font-14px">
-      <div className="row align-items-center">
-        <div className="col-1"></div>
-        <div className="col-2 me-4">
-          <i className="far fa-comment me-2"></i>
-          <span>{tuit.replies}</span>
-        </div>
-        <div className="col-2 me-4">
-          <i className="fas fa-retweet me-2"></i>
-          <span>{tuit.retuits}</span>
-        </div>
-
-        {!tuit.liked && (
-          <div className="col-2 me-4">
-            <button
-              onClick={() => {
-                dispatch(updateTuitThunk({ ...tuit, likes: tuit.likes + 1, liked: true }))
-              }}
-              className="btn"
-            >
-              <i className="fa-regular fa-heart me-2"></i>
-            </button>
-            <span>{tuit.likes}</span>
-          </div>
+    <span class="d-flex justify-content-around">
+      <span>
+        <FontAwesomeIcon icon={faCommenting} /> &nbsp; {tuit.replies}
+      </span>
+      <span>
+        <FontAwesomeIcon icon={faRetweet} /> &nbsp; {tuit.retuits}
+      </span>
+      <span>
+        {tuit.liked ? (
+          <FontAwesomeIcon
+            style={{ color: "red" }}
+            icon={faHeart}
+            onClick={() =>
+              dispatch(
+                updateTuitThunk({
+                  ...tuit,
+                  likes: tuit.likes - 1,
+                  liked: !tuit.liked,
+                })
+              )
+            }
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon={faHeart}
+            onClick={() =>
+              dispatch(
+                updateTuitThunk({
+                  ...tuit,
+                  likes: tuit.likes + 1,
+                  liked: !tuit.liked,
+                })
+              )
+            }
+          />
         )}
-
-        {tuit.liked && (
-          <div className="col-2 me-4">
-            <button
-              onClick={() => {
-                dispatch(updateTuitThunk({ ...tuit, likes: tuit.likes - 1, liked: false }))
-              }}
-              className="btn"
-            >
-              <i className="fa-solid fa-heart me-2" style={{color: '#dc143c'}}></i>
-            </button>
-            <span>{tuit.likes}</span>
-          </div>
+        &nbsp;{tuit.likes}
+      </span>
+      <span>
+        {tuit.disliked ? (
+          <FontAwesomeIcon
+            style={{ color: "blue" }}
+            icon={faThumbsDown}
+            onClick={() =>
+              dispatch(
+                updateTuitThunk({
+                  ...tuit,
+                  dislikes: tuit.dislikes - 1,
+                  disliked: !tuit.disliked,
+                })
+              )
+            }
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon={faThumbsDown}
+            onClick={() =>
+              dispatch(
+                updateTuitThunk({
+                  ...tuit,
+                  dislikes: tuit.dislikes + 1,
+                  disliked: !tuit.disliked,
+                })
+              )
+            }
+          />
         )}
-
-        <div className="col-2">
-          <i className="fas fa-upload"></i>
-        </div>
-      </div>
-    </div>
+        &nbsp;{tuit.dislikes}
+      </span>
+      <span>
+        <FontAwesomeIcon icon={faArrowUpFromBracket} />
+      </span>
+    </span>
   );
 };
-export default TuitStats;
+export default TuitsStats;

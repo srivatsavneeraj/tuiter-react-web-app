@@ -1,54 +1,144 @@
-import { current } from "@reduxjs/toolkit";
 import React from "react";
-import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHouse,
+  faHashtag,
+  faBell,
+  faEnvelope,
+  faBookmark,
+  faList,
+  faEllipsis,
+  faUser,
+  faRegistered,
+  faNewspaper,
+} from "@fortawesome/free-solid-svg-icons";
+// import "./index.css";
+
 const NavigationSidebar = () => {
-  const { currentUser } = useSelector((state) => state.user);
-
+  
   const { pathname } = useLocation();
-  let [ignore, tuiter, active] = pathname.split("/");
-
-  if (!active) {
-    active = "home";
-  }
-
+  const [ignore, tuiter, active] = pathname.split("/");
   const links = [
-    "home",
-    "explore",
-    "notifications",
-    "messages",
-    "bookmarks",
-    "lists",
-    "more",
+    { name: "home", icon: faHouse },
+    { name: "explore", icon: faHashtag },
+    { name: "notifications", icon: faBell },
+    { name: "messages", icon: faEnvelope },
+    { name: "bookmarks", icon: faBookmark },
+    { name: "lists", icon: faList },
+    { name: "more", icon: faEllipsis },
   ];
+
+  const {currentUser} = useSelector((state) => state.user);
+  console.log("Nav Bar");
+  console.log(currentUser);
+
   return (
-    <div className="list-group">
-      {links.map((link) => (
-        <Link
-          key={link}
-          to={`/tuiter/${link}`}
-          className={`list-group-item text-capitalize ${
-            active === link ? "active" : ""
-          }`}
-        >
-          {link}
-        </Link>
-      ))}
-      {!currentUser && (
-        <Link className="list-group-item text-capitalize" to="/tuiter/login">
-          Login
-        </Link>
-      )}
-      {!currentUser && (
-        <Link className="list-group-item text-capitalize" to="/tuiter/register">
-          Register
-        </Link>
-      )}
-      {currentUser && (
-        <Link className="list-group-item text-capitalize" to="/tuiter/profile">
-          Profile
-        </Link>
-      )}
+    <div class="container">
+      <div className="d-none d-xl-block list-group">
+        {links.map((link) => (
+          <Link
+            to={`/tuiter/${link.name}`}
+            className={`list-group-item text-capitalize ${
+              active === link.name ? "active" : ""
+            }`}
+          >
+            <FontAwesomeIcon icon={link.icon} /> &nbsp;
+            {link.name}
+          </Link>
+        ))}
+        {!currentUser && (
+          <Link
+            to={`/tuiter/login`}
+            className={`list-group-item text-capitalize ${
+              active === "login" ? "active" : ""
+            }`}
+          >
+            <FontAwesomeIcon
+              icon={faHashtag}
+              style={{ paddingRight: "10px" }}
+            />
+            Login
+          </Link>
+        )}
+        {!currentUser && (
+          <Link
+            to={`/tuiter/register`}
+            className={`list-group-item text-capitalize ${
+              active === "register" ? "active" : ""
+            }`}
+          >
+            <FontAwesomeIcon
+              icon={faNewspaper}
+              style={{ paddingRight: "10px" }}
+            />
+            Register
+          </Link>
+        )}
+        {currentUser && (
+          <Link
+            to={`/tuiter/profile`}
+            className={`list-group-item text-capitalize ${
+              active === "profile" ? "active" : ""
+            }`}
+          >
+            <FontAwesomeIcon icon={faUser} style={{ paddingRight: "10px" }} />
+            Profile
+          </Link>
+        )}
+      </div>
+
+      <div className="d-block d-xl-none list-group">
+        {links.map((link) => (
+          <Link
+            to={`/tuiter/${link.name}`}
+            className={`list-group-item text-capitalize ${
+              active === link.name ? "active" : ""
+            }`}
+          >
+            <FontAwesomeIcon icon={link.icon} />
+            {/* {link.name} */}
+          </Link>
+        ))}
+        {!currentUser && (
+          <Link
+            to={`/tuiter/login`}
+            className={`list-group-item text-capitalize ${
+              active === "login" ? "active" : ""
+            }`}
+          >
+            <FontAwesomeIcon
+              icon={faHashtag}
+              style={{ paddingRight: "10px" }}
+            />
+          </Link>
+        )}
+        {!currentUser && (
+          <Link
+            to={`/tuiter/register`}
+            className={`list-group-item text-capitalize ${
+              active === "register" ? "active" : ""
+            }`}
+          >
+            <FontAwesomeIcon
+              icon={faNewspaper}
+              style={{ paddingRight: "10px" }}
+            />
+          </Link>
+        )}
+        {currentUser && (
+          <Link
+            to={`/tuiter/profile`}
+            className={`list-group-item text-capitalize ${
+              active === "profile" ? "active" : ""
+            }`}
+          >
+            <FontAwesomeIcon icon={faUser} />
+          </Link>
+        )}
+      </div>
     </div>
   );
 };

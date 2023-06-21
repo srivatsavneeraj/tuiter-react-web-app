@@ -1,29 +1,45 @@
-import React, { useState } from "react";
-import { createTuitThunk } from "./services/tuits-thunks";
-import { useDispatch } from "react-redux";
-import { AiOutlinePicture } from "react-icons/ai";
-import { HiOutlineLocationMarker } from "react-icons/hi";
-import { MdGif, MdFormatListBulleted } from "react-icons/md";
+import React, { useState, useEffect } from "react";
+import {
+  AiOutlineBarChart,
+  AiOutlineBars,
+  AiOutlineFileGif,
+  AiOutlinePicture,
+} from "react-icons/ai";
 import { BsEmojiSmile } from "react-icons/bs";
-import { TbCalendarStats } from "react-icons/tb";
-import { BiBold, BiItalic } from "react-icons/bi";
+import { HiOutlineLocationMarker } from "react-icons/hi";
+import { createTuitThunk } from "./services/tuits-thunks";
+import { useSelector, useDispatch } from "react-redux";
+import { profileThunk } from "./services/auth-thunks";
 
 const WhatsHappening = () => {
   let [whatsHappening, setWhatsHappening] = useState("");
   const dispatch = useDispatch();
   const tuitClickHandler = () => {
+    // console.log(whatsHappening);
     const newTuit = {
+      topic: "New Topic",
+      userName: "@newUser",
+      handle: "@newUser",
+      time: "0h",
+      image: "nasa.png",
+      title: "New Tuit",
+      liked: false,
+      likes: 0,
+      dislikes: 0,
+      replies: 0,
+      retuits: 0,
       tuit: whatsHappening,
     };
     dispatch(createTuitThunk(newTuit));
     setWhatsHappening("");
   };
+
   return (
     <div className="row">
       <div className="col-auto">
         <img src="/images/nasa.png" width={60} />
       </div>
-      <div className="col-10">
+      <div className="col-9 col-xxl-10">
         <textarea
           value={whatsHappening}
           placeholder="What's happening?"
@@ -39,13 +55,10 @@ const WhatsHappening = () => {
           </button>
           <div className="text-primary fs-2">
             <AiOutlinePicture className="me-3" />
-            <MdGif className="me-3" />
-            <MdFormatListBulleted className="me-3" />
+            <AiOutlineFileGif className="me-3" />
+            <AiOutlineBarChart className="me-3" />
             <BsEmojiSmile className="me-3" />
-            <TbCalendarStats className="me-3" />
             <HiOutlineLocationMarker className="me-3" />
-            <BiBold className="me-3" />
-            <BiItalic className="me-3" />
           </div>
         </div>
       </div>

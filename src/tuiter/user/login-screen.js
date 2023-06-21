@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { loginThunk } from "../services/auth-thunks";
+import { ToastContainer, toast } from "react-toastify";
+
 function LoginScreen() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -9,10 +11,15 @@ function LoginScreen() {
   const dispatch = useDispatch();
   const handleLogin = async () => {
     try {
-      await dispatch(loginThunk({ username, password }));
-      navigate("/tuiter/profile");
+      const user = await dispatch(loginThunk({ username, password }));
+      if (user.payload) navigate("/tuiter/profile");
+      else {
+        toast.error("Username does not exist.", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      }
     } catch (e) {
-      console.log(e);
+      alert(e);
     }
   };
   return (

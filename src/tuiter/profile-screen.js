@@ -5,30 +5,38 @@ import {
   profileThunk,
   logoutThunk,
   updateUserThunk,
-} from "../services/auth-thunks";
+} from "./services/auth-thunks";
 function ProfileScreen() {
   const { currentUser } = useSelector((state) => state.user);
-  const [profile, setProfile] = useState(currentUser);
+  const [ profile, setProfile ] = useState(currentUser || {});
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const save = async () => {
-    await dispatch(updateUserThunk(profile));
+  
+  // console.log("Profile screen");
+  // console.log(currentUser);
+  // console.log(profile);
+
+  const save = () => {
+    dispatch(updateUserThunk(profile));
   };
+  
   useEffect(() => {
-    const loadProfile = async () => {
+    async function fetchProfile() {
       const { payload } = await dispatch(profileThunk());
       setProfile(payload);
-    };
-    loadProfile();
-  }, []);
+    }
+    fetchProfile();
+  }, [dispatch]);
+
   return (
     <div>
       <h1>Profile Screen</h1>
       {profile && (
         <div>
-          <div>
+          <div className="mt-2">
             <label>First Name</label>
             <input
+              className="form-control"
               type="text"
               value={profile.firstName}
               onChange={(event) => {
@@ -40,9 +48,11 @@ function ProfileScreen() {
               }}
             />
           </div>
-          <div>
+
+          <div className="mt-2">
             <label>Last Name</label>
             <input
+              className="form-control"
               type="text"
               value={profile.lastName}
               onChange={(event) => {
@@ -56,15 +66,17 @@ function ProfileScreen() {
           </div>
         </div>
       )}
-      <button
+      <button className="m-2 btn btn-primary"
         onClick={() => {
           dispatch(logoutThunk());
+          // sessionStorage.removeItem(currentUser);
           navigate("/tuiter/login");
         }}
       >
+        {" "}
         Logout
       </button>
-      <button onClick={save}>Save </button>
+      <button className="m-2 btn btn-primary" onClick={save}>Save </button>
     </div>
   );
 }
